@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "UIImageView+WebCache.h"
-#import "LBPhotoItem.h"
 #import "LBPhotoBrowserViewController.h"
 
 @interface ViewController ()
@@ -70,9 +69,9 @@
     }
     
     
-    LBPhotoBrowserViewController *lbPBVC = [[LBPhotoBrowserViewController alloc] init];
-    //[lbPBVC showFromViewController:self];
-    [self presentViewController:lbPBVC animated:YES completion:nil];
+    LBPhotoBrowserViewController *lbPBVC = [[LBPhotoBrowserViewController alloc] initWithPhotoItems:items selectedIndex:tap.view.tag];
+    [lbPBVC showFromViewController:self];
+    
     
 }
 
