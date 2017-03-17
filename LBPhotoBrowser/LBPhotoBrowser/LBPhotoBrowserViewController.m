@@ -11,11 +11,21 @@
 #import "LBPhotoView.h"
 
 @interface LBPhotoBrowserViewController ()<UIScrollViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+/** navgationView */
+@property (nonatomic, strong)UIView *navgationView;
 
-@property (nonatomic, assign)NSInteger selectedIndex;
+
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, strong) UICollectionView *mCollectionView;
 @property (nonatomic, strong) UIImageView *backgroundView;
-@property (nonatomic, strong) UILabel *pageLabel;
+
+/** 手势 */
+@property (nonatomic, strong)UITapGestureRecognizer *doubleTap;
+@property (nonatomic, strong)UITapGestureRecognizer *singleTap;
+@property (nonatomic, strong)UIPanGestureRecognizer *pan;
+
+@property (nonatomic, strong)UIButton *disPlayModelBtn;
 
 @end
 
@@ -24,6 +34,8 @@
 
 @implementation LBPhotoBrowserViewController{
     CGPoint _startLocation;
+    
+    CGPoint _oldContentOffset;
 }
 
 - (instancetype)initWithPhotoItems:(NSMutableArray <LBPhotoItem *> *)items selectedIndex:(NSUInteger)selectedIndex{
@@ -31,6 +43,7 @@
     if(self){
         _items = items;
         _selectedIndex = selectedIndex;
+        _displayMode = KSPhotoBrowserImageFullScreen;
         
         self.modalPresentationStyle = UIModalPresentationCustom;
         self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -38,13 +51,6 @@
     return self;
 }
 
-- (instancetype)initWithPhotoItems:(NSMutableArray <LBPhotoItem *> *)items{
-    self = [super init];
-    if(self){
-        _items = items;
-    }
-    return self;
-}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -83,29 +89,29 @@
     
     [self.view addSubview:self.mCollectionView];
     [self.mCollectionView setContentOffset:CGPointMake(_mCollectionView.bounds.size.width * _selectedIndex, 0) animated:NO];
-    
-    _pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-40, self.view.bounds.size.width, 20)];
-    _pageLabel.textColor = [UIColor whiteColor];
-    _pageLabel.font = [UIFont systemFontOfSize:16];
-    _pageLabel.textAlignment = NSTextAlignmentCenter;
     [self scrollViewDidScroll:_mCollectionView];
-    [self.view addSubview:_pageLabel];
     
     
-    //[self addBackBtn];
+    [self.view addSubview:self.navgationView];
     [self addGestureRecognizer];
+    
 }
 
 #pragma mark - 懒加载
+- (UIView *)navgationView{
+    if(!_navgationView){
+        _navgationView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 64)];
+        _navgationView.backgroundColor = [UIColor clearColor];
+        [_navgationView addSubview:self.backBtn];
+        [_navgationView addSubview:self.pageLabel];
+        [_navgationView addSubview:self.disPlayModelBtn];
+    }
+    return _navgationView;
+}
 
 - (UICollectionView *)mCollectionView{
     if(!_mCollectionView){
-        //确定是水平滚动，还是垂直滚动
-        UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
-        [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        //[flowLayout setItemSize:CGSizeMake(MB_APP_SIZE.width, MB_APP_SIZE.height)];
-        
-        _mCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(-10, 0, SCREEN_WIDTH+10, SCREEN_HEIGHT) collectionViewLayout:flowLayout];
+        _mCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(-10, 0, SCREEN_WIDTH+10, SCREEN_HEIGHT) collectionViewLayout:self.flowLayout];
         _mCollectionView.delegate= self;
         _mCollectionView.dataSource = self;
         _mCollectionView.pagingEnabled = YES;
@@ -114,6 +120,50 @@
         
     }
     return _mCollectionView;
+}
+
+- (UICollectionViewFlowLayout *)flowLayout{
+    if(!_flowLayout){
+        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        //确定是水平滚动，还是垂直滚动
+        [_flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+         //[flowLayout setItemSize:CGSizeMake(MB_APP_SIZE.width, MB_APP_SIZE.height)];
+    }
+    return _flowLayout;
+}
+//返回按钮
+- (UIButton *)backBtn {
+    if(!_backBtn){
+        _backBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        _backBtn.frame = CGRectMake(20, 5, 17, 17);
+        _backBtn.backgroundColor = [UIColor redColor];
+        [_backBtn addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _backBtn;
+}
+
+//页数
+- (UILabel *) pageLabel{
+    if(!_pageLabel){
+        _pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+        _pageLabel.textAlignment = NSTextAlignmentCenter;
+        _pageLabel.textColor = [UIColor whiteColor];
+        _pageLabel.font = [UIFont systemFontOfSize:16];
+        _pageLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _pageLabel;
+}
+
+//显示模式按钮
+- (UIButton *)disPlayModelBtn{
+    if(!_displayMode){
+        _disPlayModelBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        _disPlayModelBtn.frame = CGRectMake(SCREEN_WIDTH - 60, 5, 17, 17);
+        _disPlayModelBtn.backgroundColor = [UIColor redColor];
+        [_disPlayModelBtn addTarget:self action:@selector(switchDisplayMode:) forControlEvents:UIControlEventTouchUpInside];
+        _disPlayModelBtn.selected = NO;//NO为全屏展示  YES为预览模式
+    }
+    return _disPlayModelBtn;
 }
 
 
@@ -129,25 +179,44 @@
     static NSString * CellIdentifier = @"LBPhotoCollectionViewCell";
     LBPhotoCollectionViewCell * cell = (LBPhotoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.contentView.backgroundColor = [UIColor clearColor];
-    cell.photoItem = _items[indexPath.row];
+    [cell setDisplayModel:_displayMode photoItem:_items[indexPath.row]];
     return cell;
 }
+
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self collectionSelectedItem:indexPath.row];
+}
+
 #pragma mark --UICollectionViewDelegateFlowLayout
 
 //定义每个Item 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
+    if(_displayMode == KSPhotoBrowserImageFullScreen){
+        return CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
+    }else{
+        return CGSizeMake((SCREEN_WIDTH - 22)/3, (SCREEN_WIDTH - 13)/3);
+    }
+    
 }
 
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(0 ,10, 0, 0);
+    if(_displayMode == KSPhotoBrowserImageFullScreen){
+        return UIEdgeInsetsMake(0 ,10, 0, 0);
+    }else{
+        return UIEdgeInsetsMake(0 ,1, 1, 1);
+    }
+    
 }
 
 #pragma mark - scrollerViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(_displayMode == KSPhotoBrowserImagePreview){
+        _oldContentOffset = scrollView.contentOffset;
+    }
+    
     NSInteger page = _mCollectionView.contentOffset.x / _mCollectionView.frame.size.width + 0.5;
     if(page < 0 || page >= _items.count){
         return;
@@ -157,27 +226,36 @@
     
 }
 
-#pragma mark - GesTure
+#pragma mark - Gesture
 
 - (void)addGestureRecognizer {
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDoubleTap:)];
-    doubleTap.numberOfTapsRequired = 2;
-    [self.view addGestureRecognizer:doubleTap];
+    _doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDoubleTap:)];
+    _doubleTap.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:_doubleTap];
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSingleTap:)];
-    singleTap.numberOfTapsRequired = 1;
-    [singleTap requireGestureRecognizerToFail:doubleTap];
-    [self.view addGestureRecognizer:singleTap];
+    _singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSingleTap:)];
+    _singleTap.numberOfTapsRequired = 1;
+    [_singleTap requireGestureRecognizerToFail:_doubleTap];
+    [self.view addGestureRecognizer:_singleTap];
     
 //    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPress:)];
 //    [self.view addGestureRecognizer:longPress];
     
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
-    [self.view addGestureRecognizer:pan];
+    _pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
+    [self.view addGestureRecognizer:_pan];
+}
+
+- (void) removeGestureRecognizer{
+    [self.view removeGestureRecognizer:_doubleTap];
+    [self.view removeGestureRecognizer:_singleTap];
+    [self.view removeGestureRecognizer:_pan];
 }
 
 //双击
 - (void)didDoubleTap:(UITapGestureRecognizer *)tap {
+    if(_displayMode == KSPhotoBrowserImagePreview){
+        return;
+    }
     LBPhotoView *photoView = [self getCurrentItemView];
     
     if (photoView.zoomScale > 1) {
@@ -193,7 +271,23 @@
 
 //单击
 - (void)didSingleTap:(UITapGestureRecognizer *)tap {
-    [self dismiss:nil];
+    if(_displayMode == KSPhotoBrowserImageFullScreen){
+        if(self.navgationView.hidden){
+            self.navgationView.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.navgationView.alpha = 1;
+            } completion:^(BOOL finished) {
+                
+            }];
+        }else{
+            [UIView animateWithDuration:0.3 animations:^{
+                self.navgationView.alpha = 0;
+            } completion:^(BOOL finished) {
+                self.navgationView.hidden = YES;
+            }];
+        }
+        
+    }
 }
 
 //长按
@@ -212,6 +306,9 @@
 
 //拖动
 - (void)didPan:(UIPanGestureRecognizer *)pan {
+    if(_displayMode == KSPhotoBrowserImagePreview){
+        return;
+    }
     LBPhotoView *photoView = [self getCurrentItemView];
     if (photoView.zoomScale > 1.1) {
         return;
@@ -226,7 +323,6 @@
                 break;
             case UIGestureRecognizerStateChanged: {
                 double percent = 1 - fabs(point.y)/(self.view.frame.size.height/2);
-                NSLog(@"%lf",percent);
                 percent = MAX(percent, 0);
                 double s = MAX(percent, 0.5);
                 CGAffineTransform translation = CGAffineTransformMakeTranslation(point.x/s, point.y/s);
@@ -295,17 +391,9 @@
     
 }
 
-#pragma marl - Push And Dismiss
+#pragma mark - Push And Dismiss  switchDisplayMode
 - (void)showFromViewController:(UIViewController *)selfVC{
     [selfVC presentViewController:self animated:YES completion:nil];
-}
-
-- (void) addBackBtn{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-    btn.frame = CGRectMake(0, 20, 40, 40);
-    btn.backgroundColor = [UIColor redColor];
-    [btn addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
 }
 
 - (void) dismissWithAnimated:(BOOL)animated{
@@ -321,6 +409,57 @@
     }
 }
 
+- (void)switchDisplayMode:(UIButton *)btn{
+    if(_displayMode == KSPhotoBrowserImageFullScreen){
+        [UIApplication sharedApplication].statusBarHidden = YES;
+        _displayMode = KSPhotoBrowserImagePreview;
+        _pageLabel.hidden = YES;
+        btn.selected = YES;
+        _mCollectionView.pagingEnabled = NO;
+        [self removeGestureRecognizer];
+    }else{
+        [UIApplication sharedApplication].statusBarHidden = NO;
+        _displayMode = KSPhotoBrowserImageFullScreen;
+        _pageLabel.hidden = NO;
+        btn.selected = NO;
+        _mCollectionView.pagingEnabled = YES;
+        [self addGestureRecognizer];
+    }
+    [self collectionReloadData];
+    [self changgeCollectionViewFrame];
+}
+
+- (void)collectionSelectedItem:(NSInteger)index{
+    [self switchDisplayMode:_disPlayModelBtn];
+    [self.mCollectionView setContentOffset:CGPointMake(_mCollectionView.bounds.size.width * index, 0) animated:NO];
+}
+
+- (void) collectionReloadData{
+    if(_displayMode == KSPhotoBrowserImageFullScreen){
+        [self.flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    }else{
+        [self.flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    }
+    [self.mCollectionView reloadData];
+}
+
+- (void)changgeCollectionViewFrame{
+    if(_displayMode == KSPhotoBrowserImageFullScreen){
+        [UIView animateWithDuration:0.3 animations:^{
+            self.mCollectionView.frame = CGRectMake(-10, 0, SCREEN_WIDTH+10, SCREEN_HEIGHT);
+        }];
+    }else{
+        [UIView animateWithDuration:0.3 animations:^{
+            self.mCollectionView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
+        }];
+    }
+    
+    if(_displayMode == KSPhotoBrowserImagePreview){
+        [self.mCollectionView setContentOffset:_oldContentOffset animated:NO];
+    }
+}
+
+
 - (void) dismiss:(UIButton *)btn{
     [self dismissWithAnimated:YES];
 }
@@ -331,10 +470,18 @@
     return cell.photoView;
 }
 
+#pragma mark - 外部方法
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc{
+    NSLog(@"11111dealloc");
+    
 }
 
 /*

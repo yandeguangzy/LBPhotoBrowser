@@ -9,6 +9,9 @@
 #ifndef LBPhotoBrowser_h
 #define LBPhotoBrowser_h
 
-#import "LBPhotoBrowserViewController.h"
+typedef NS_ENUM(NSUInteger, LBPhotoBrowserImageDisplayMode) {
+    KSPhotoBrowserImageFullScreen = 0,
+    KSPhotoBrowserImagePreview
+};
 
 #endif /* LBPhotoBrowser_h */

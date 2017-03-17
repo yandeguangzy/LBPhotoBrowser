@@ -27,19 +27,34 @@
     return self;
 }
 
-- (void)setItem:(LBPhotoItem *)item determinate:(BOOL)determinate{
+- (void)setDisplayMode:(LBPhotoBrowserImageDisplayMode)displayMode{
+    _displayMode = displayMode;
+    if(_displayMode == KSPhotoBrowserImageFullScreen){
+        self.userInteractionEnabled = YES;
+        self.mImageView.contentMode = UIViewContentModeScaleAspectFill;
+    }else{
+        self.userInteractionEnabled = NO;
+        self.mImageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+}
+
+- (void)setItem:(LBPhotoItem *)item displayMode:(LBPhotoBrowserImageDisplayMode)displayMode{
+    self.displayMode = displayMode;
+    
+    self.mImageView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+    
     [self.mImageView sd_setImageWithURL:item.imgUrl placeholderImage:item.placeholdImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-         [self resizeImageView];
+        [self resizeImageView];
     }];
     [self resizeImageView];
 }
 
 - (UIImageView *)mImageView{
     if(!_mImageView){
-        _mImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+        _mImageView = [[UIImageView alloc] init];
+        _mImageView.userInteractionEnabled = NO;
         _mImageView.contentMode = UIViewContentModeScaleAspectFill;
         _mImageView.clipsToBounds = YES;
-        
     }
     return _mImageView;
 }
@@ -73,7 +88,12 @@
 
 
 - (UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView{
-    return self.mImageView;
+    if(_displayMode == KSPhotoBrowserImageFullScreen){
+        return self.mImageView;
+    }else{
+        return nil;
+    }
+    
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {

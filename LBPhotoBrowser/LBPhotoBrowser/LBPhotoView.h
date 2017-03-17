@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "LBPhotoItem.h"
+#import "LBPhotoBrowser.h"
 
 @interface LBPhotoView : UIScrollView<UIScrollViewDelegate>
+
+/** 显示模式（大图模式/预览模式） */
+@property (nonatomic, assign)LBPhotoBrowserImageDisplayMode displayMode;
 
 @property (nonatomic, strong)LBPhotoItem *item;
 @property (nonatomic, strong)UIImageView *mImageView;
 
-- (void)setItem:(LBPhotoItem *)item determinate:(BOOL)determinate;
+- (void)setItem:(LBPhotoItem *)item displayMode:(LBPhotoBrowserImageDisplayMode)displayMode;
+
 @end

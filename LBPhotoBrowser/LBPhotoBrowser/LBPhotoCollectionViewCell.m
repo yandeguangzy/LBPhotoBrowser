@@ -25,13 +25,21 @@
 
 - (LBPhotoView *)photoView{
     if(!_photoView){
-        _photoView = [[LBPhotoView alloc] initWithFrame:self.bounds];
+        _photoView = [[LBPhotoView alloc] init];
     }
     return _photoView;
 }
 
 - (void)setPhotoItem:(LBPhotoItem *)photoItem{
-    [self.photoView setItem:photoItem determinate:YES];
+    _photoItem = photoItem;
+    [self.photoView setItem:photoItem displayMode:_displayMode];
+}
+
+
+- (void) setDisplayModel:(LBPhotoBrowserImageDisplayMode)displayMode photoItem:(LBPhotoItem *)photoItem{
+    self.photoView.frame = self.bounds;
+    self.displayMode = displayMode;
+    self.photoItem = photoItem;
 }
 
 @end
