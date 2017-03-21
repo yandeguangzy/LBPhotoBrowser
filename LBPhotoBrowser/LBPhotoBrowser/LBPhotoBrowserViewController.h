@@ -23,6 +23,9 @@
 /** 显示模式（大图模式/预览模式） */
 @property (nonatomic, assign)LBPhotoBrowserImageDisplayMode displayMode;
 
+/** 是否启用RemarkView 默认为NO*/
+@property (nonatomic, assign)BOOL remarkViewEnable;
+
 
 - (instancetype)initWithPhotoItems:(NSMutableArray <LBPhotoItem *> *)items selectedIndex:(NSUInteger)selectedIndex;
 - (void)showFromViewController:(UIViewController *)selfVC;

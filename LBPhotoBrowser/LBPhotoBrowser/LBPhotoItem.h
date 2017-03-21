@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) UIImage *placeholdImage;
 
+@property (nonatomic, strong) NSString *title;
+
 @property (nonatomic, strong) NSString *remark;
 
 @property (nonatomic, assign) BOOL loadSuccess;

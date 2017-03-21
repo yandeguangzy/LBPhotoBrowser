@@ -9,6 +9,9 @@
 #ifndef LBPhotoBrowser_h
 #define LBPhotoBrowser_h
 
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
 typedef NS_ENUM(NSUInteger, LBPhotoBrowserImageDisplayMode) {
     KSPhotoBrowserImageFullScreen = 0,
     KSPhotoBrowserImagePreview

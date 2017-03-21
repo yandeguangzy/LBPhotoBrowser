@@ -8,6 +8,7 @@
 
 #import "LBPhotoBrowserViewController.h"
 #import "LBPhotoCollectionViewCell.h"
+#import "LBPhotoBrowserRemarkView.h"
 #import "LBPhotoView.h"
 
 @interface LBPhotoBrowserViewController ()<UIScrollViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) UICollectionView *mCollectionView;
 @property (nonatomic, strong) UIImageView *backgroundView;
 
+@property (nonatomic, strong) LBPhotoBrowserRemarkView *remarkScrollView;
+
 /** 手势 */
 @property (nonatomic, strong)UITapGestureRecognizer *doubleTap;
 @property (nonatomic, strong)UITapGestureRecognizer *singleTap;
@@ -28,9 +31,6 @@
 @property (nonatomic, strong)UIButton *disPlayModelBtn;
 
 @end
-
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 @implementation LBPhotoBrowserViewController{
     CGPoint _startLocation;
@@ -79,29 +79,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _remarkViewEnable = YES;
     self.view.backgroundColor = [UIColor clearColor];
+    
+    [self addGestureRecognizer];
     
     _backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     _backgroundView.contentMode = UIViewContentModeScaleAspectFill;
     _backgroundView.backgroundColor = [UIColor blackColor];
     _backgroundView.alpha = 1;
+    _backgroundView.userInteractionEnabled = YES;
     [self.view addSubview:_backgroundView];
     
     [self.view addSubview:self.mCollectionView];
     [self.mCollectionView setContentOffset:CGPointMake(_mCollectionView.bounds.size.width * _selectedIndex, 0) animated:NO];
-    [self scrollViewDidScroll:_mCollectionView];
-    
     
     [self.view addSubview:self.navgationView];
-    [self addGestureRecognizer];
+    [self.view addSubview:self.remarkScrollView];
     
+    [self scrollViewDidScroll:_mCollectionView];
+    [self scrollViewDidEndDecelerating:_mCollectionView];
 }
 
 #pragma mark - 懒加载
 - (UIView *)navgationView{
     if(!_navgationView){
-        _navgationView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 64)];
-        _navgationView.backgroundColor = [UIColor clearColor];
+        _navgationView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 44)];
+        _navgationView.backgroundColor = [UIColor clearColor];//[UIColor colorWithWhite:0 alpha:0.6];
         [_navgationView addSubview:self.backBtn];
         [_navgationView addSubview:self.pageLabel];
         [_navgationView addSubview:self.disPlayModelBtn];
@@ -134,9 +138,10 @@
 //返回按钮
 - (UIButton *)backBtn {
     if(!_backBtn){
-        _backBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        _backBtn.frame = CGRectMake(20, 5, 17, 17);
-        _backBtn.backgroundColor = [UIColor redColor];
+        _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _backBtn.frame = CGRectMake(30, 5, 25, 25);
+        _backBtn.backgroundColor = [UIColor clearColor];
+        [_backBtn setBackgroundImage:[UIImage imageNamed:@"LBPhotoBrowser_close"] forState:UIControlStateNormal];
         [_backBtn addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _backBtn;
@@ -157,13 +162,28 @@
 //显示模式按钮
 - (UIButton *)disPlayModelBtn{
     if(!_displayMode){
-        _disPlayModelBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        _disPlayModelBtn.frame = CGRectMake(SCREEN_WIDTH - 60, 5, 17, 17);
-        _disPlayModelBtn.backgroundColor = [UIColor redColor];
+        _disPlayModelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _disPlayModelBtn.frame = CGRectMake(SCREEN_WIDTH - 64, 5, 34, 34);
+        _disPlayModelBtn.backgroundColor = [UIColor clearColor];
+        [_disPlayModelBtn setBackgroundImage:[UIImage imageNamed:@"LBPhotoBrowser_small"] forState:UIControlStateNormal];
+        [_disPlayModelBtn setBackgroundImage:[UIImage imageNamed:@"LBPhotoBrowser_full"] forState:UIControlStateSelected];
         [_disPlayModelBtn addTarget:self action:@selector(switchDisplayMode:) forControlEvents:UIControlEventTouchUpInside];
         _disPlayModelBtn.selected = NO;//NO为全屏展示  YES为预览模式
     }
     return _disPlayModelBtn;
+}
+
+//备注信息背景视图
+- (LBPhotoBrowserRemarkView *)remarkScrollView{
+    if(!_remarkScrollView){
+        _remarkScrollView = [[LBPhotoBrowserRemarkView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT/2)];
+    }
+    return _remarkScrollView;
+}
+
+#pragma mark - set方法
+- (void) setRemarkViewEnable:(BOOL)remarkViewEnable{
+    _remarkViewEnable = remarkViewEnable;
 }
 
 
@@ -223,7 +243,14 @@
     }
     _selectedIndex = page;
     _pageLabel.text = [NSString stringWithFormat:@"%ld / %ld", _selectedIndex + 1, _items.count];
-    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    NSInteger page = _mCollectionView.contentOffset.x / _mCollectionView.frame.size.width;
+    if(_displayMode == KSPhotoBrowserImageFullScreen){
+        LBPhotoItem *item = _items[page];
+        [self.remarkScrollView updateWithTitle:nil content:item.remark];
+    }
 }
 
 #pragma mark - Gesture
@@ -274,19 +301,23 @@
     if(_displayMode == KSPhotoBrowserImageFullScreen){
         if(self.navgationView.hidden){
             self.navgationView.hidden = NO;
+            self.remarkScrollView.hidden = _remarkViewEnable?NO:YES;
             [UIView animateWithDuration:0.3 animations:^{
                 self.navgationView.alpha = 1;
+                self.remarkScrollView.alpha = 1;
             } completion:^(BOOL finished) {
-                
+                [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
             }];
         }else{
             [UIView animateWithDuration:0.3 animations:^{
                 self.navgationView.alpha = 0;
+                self.remarkScrollView.alpha = 0;
             } completion:^(BOOL finished) {
                 self.navgationView.hidden = YES;
+                self.remarkScrollView.hidden = YES;
+                [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
             }];
         }
-        
     }
 }
 
