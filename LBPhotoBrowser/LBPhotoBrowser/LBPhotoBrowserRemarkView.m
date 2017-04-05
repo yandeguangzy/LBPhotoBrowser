@@ -18,7 +18,7 @@
 
 @implementation LBPhotoBrowserRemarkView
 
-#define MaxHeightSelf [UIScreen mainScreen].bounds.size.height/3
+#define MaxHeightSelf [UIScreen mainScreen].bounds.size.height/4
 #define LabelMargin 20
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -26,6 +26,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        self.bounces = NO;
     }
     return self;
 }
@@ -62,7 +63,7 @@
     _contentBackView.frame = CGRectMake(0, 0, self.bounds.size.width, size.height + LabelMargin * 2);
     
     self.contentLabel.frame = CGRectMake(LabelMargin, LabelMargin, self.bounds.size.width - LabelMargin * 2, size.height);
-    [self setContentSize:CGSizeMake(self.bounds.size.width, size.height > (MaxHeightSelf - LabelMargin * 2)?size.height + LabelMargin * 2:self.bounds.size.height)];
+    [self setContentSize:CGSizeMake(self.bounds.size.width + 0.5f, size.height > (MaxHeightSelf - LabelMargin * 2)?size.height + LabelMargin * 2:self.bounds.size.height)];
 }
 
 - (CGSize) labelTextTosize:(NSString *)text{

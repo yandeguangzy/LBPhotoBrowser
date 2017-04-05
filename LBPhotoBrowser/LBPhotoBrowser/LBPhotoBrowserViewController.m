@@ -217,7 +217,6 @@
     }else{
         return CGSizeMake((SCREEN_WIDTH - 22)/3, (SCREEN_WIDTH - 13)/3);
     }
-    
 }
 
 //定义每个UICollectionView 的 margin
@@ -359,7 +358,8 @@
                 CGAffineTransform translation = CGAffineTransformMakeTranslation(point.x/s, point.y/s);
                 CGAffineTransform scale = CGAffineTransformMakeScale(s, s);
                 photoView.mImageView.transform = CGAffineTransformConcat(translation, scale);
-                _backgroundView.alpha = percent;
+                _backgroundView.alpha = percent - 0.6;
+                _remarkScrollView.alpha = percent - 0.6;
             }
                 break;
             case UIGestureRecognizerStateEnded:
@@ -401,6 +401,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         photoView.mImageView.frame = sourceRect;
         _backgroundView.alpha = 0;
+        _remarkScrollView.alpha = 0;
     } completion:^(BOOL finished) {
         [self dismissWithAnimated:NO];
     }];
@@ -415,6 +416,7 @@
     [UIView animateWithDuration:0.3f animations:^{
         photoView.mImageView.transform = CGAffineTransformIdentity;
         _backgroundView.alpha = 1;
+        _remarkScrollView.alpha = 1;
     } completion:^(BOOL finished) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
         item.mImageView.alpha = 1;
@@ -445,6 +447,7 @@
         [UIApplication sharedApplication].statusBarHidden = YES;
         _displayMode = KSPhotoBrowserImagePreview;
         _pageLabel.hidden = YES;
+        _remarkScrollView.hidden = YES;
         btn.selected = YES;
         _mCollectionView.pagingEnabled = NO;
         [self removeGestureRecognizer];
@@ -452,6 +455,7 @@
         [UIApplication sharedApplication].statusBarHidden = NO;
         _displayMode = KSPhotoBrowserImageFullScreen;
         _pageLabel.hidden = NO;
+        _remarkScrollView.hidden = NO;
         btn.selected = NO;
         _mCollectionView.pagingEnabled = YES;
         [self addGestureRecognizer];
@@ -463,6 +467,7 @@
 - (void)collectionSelectedItem:(NSInteger)index{
     [self switchDisplayMode:_disPlayModelBtn];
     [self.mCollectionView setContentOffset:CGPointMake(_mCollectionView.bounds.size.width * index, 0) animated:NO];
+    [self scrollViewDidEndDecelerating:_mCollectionView];
 }
 
 - (void) collectionReloadData{
@@ -488,6 +493,7 @@
     if(_displayMode == KSPhotoBrowserImagePreview){
         [self.mCollectionView setContentOffset:_oldContentOffset animated:NO];
     }
+     [self scrollViewDidEndDecelerating:_mCollectionView];
 }
 
 
