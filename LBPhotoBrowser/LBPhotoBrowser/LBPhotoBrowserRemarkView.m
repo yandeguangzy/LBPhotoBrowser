@@ -52,9 +52,11 @@
 - (void) updateWithTitle:(NSString *)titleStr content:(NSString *)content{
     if(content.length == 0){
         self.hidden = YES;
+        _isEnable = NO;
         return;
     }else{
         self.hidden = NO;
+        _isEnable = YES;
     }
     
     [self.contentLabel setText:content];

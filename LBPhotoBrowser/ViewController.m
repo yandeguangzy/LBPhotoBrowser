@@ -82,6 +82,7 @@
     
     
     LBPhotoBrowserViewController *lbPBVC = [[LBPhotoBrowserViewController alloc] initWithPhotoItems:items selectedIndex:tap.view.tag];
+    lbPBVC.remarkViewEnable = YES;
     [lbPBVC showFromViewController:self];
     
     

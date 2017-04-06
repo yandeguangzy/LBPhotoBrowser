@@ -18,4 +18,6 @@
 
 @property (nonatomic, strong) UILabel *remarkLabel;
 
+@property (nonatomic, assign) BOOL isEnable;
+
 @end

@@ -79,7 +79,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _remarkViewEnable = YES;
     self.view.backgroundColor = [UIColor clearColor];
     
     [self addGestureRecognizer];
@@ -300,7 +299,7 @@
     if(_displayMode == KSPhotoBrowserImageFullScreen){
         if(self.navgationView.hidden){
             self.navgationView.hidden = NO;
-            self.remarkScrollView.hidden = _remarkViewEnable?NO:YES;
+            self.remarkScrollView.hidden = (_remarkViewEnable&&self.remarkScrollView.isEnable)?NO:YES;
             [UIView animateWithDuration:0.3 animations:^{
                 self.navgationView.alpha = 1;
                 self.remarkScrollView.alpha = 1;
