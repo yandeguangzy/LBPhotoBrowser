@@ -63,7 +63,7 @@
     _contentBackView.frame = CGRectMake(0, 0, self.bounds.size.width, size.height + LabelMargin * 2);
     
     self.contentLabel.frame = CGRectMake(LabelMargin, LabelMargin, self.bounds.size.width - LabelMargin * 2, size.height);
-    [self setContentSize:CGSizeMake(self.bounds.size.width + 0.5f, size.height > (MaxHeightSelf - LabelMargin * 2)?size.height + LabelMargin * 2:self.bounds.size.height)];
+    [self setContentSize:CGSizeMake(self.bounds.size.width + 0.5f, size.height > (MaxHeightSelf - LabelMargin * 2)?size.height + LabelMargin * 2 + 0.5:self.bounds.size.height + 0.5)];
 }
 
 - (CGSize) labelTextTosize:(NSString *)text{

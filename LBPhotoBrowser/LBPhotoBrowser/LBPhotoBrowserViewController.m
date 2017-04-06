@@ -241,7 +241,7 @@
         return;
     }
     _selectedIndex = page;
-    _pageLabel.text = [NSString stringWithFormat:@"%ld / %ld", _selectedIndex + 1, _items.count];
+    _pageLabel.text = [NSString stringWithFormat:@"%ld / %ld", (long)(_selectedIndex + 1), (long)_items.count];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{

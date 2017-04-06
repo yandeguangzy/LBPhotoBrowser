@@ -27,7 +27,7 @@
     return self;
 }
 
-- (void)setDisplayMode:(LBPhotoBrowserImageDisplayMode)displayMode{
+- (void)setDisplayMode:(LBPhotoBrowserImageDisplayModel)displayMode{
     _displayMode = displayMode;
     if(_displayMode == KSPhotoBrowserImageFullScreen){
         self.userInteractionEnabled = YES;
@@ -38,7 +38,7 @@
     }
 }
 
-- (void)setItem:(LBPhotoItem *)item displayMode:(LBPhotoBrowserImageDisplayMode)displayMode{
+- (void)setItem:(LBPhotoItem *)item displayMode:(LBPhotoBrowserImageDisplayModel)displayMode{
     self.displayMode = displayMode;
     
     self.mImageView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);

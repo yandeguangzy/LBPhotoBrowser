@@ -36,7 +36,7 @@
 }
 
 
-- (void) setDisplayModel:(LBPhotoBrowserImageDisplayMode)displayMode photoItem:(LBPhotoItem *)photoItem{
+- (void) setDisplayModel:(LBPhotoBrowserImageDisplayModel)displayMode photoItem:(LBPhotoItem *)photoItem{
     self.photoView.frame = self.bounds;
     self.displayMode = displayMode;
     self.photoItem = photoItem;

@@ -13,11 +13,11 @@
 @interface LBPhotoView : UIScrollView<UIScrollViewDelegate>
 
 /** 显示模式（大图模式/预览模式） */
-@property (nonatomic, assign)LBPhotoBrowserImageDisplayMode displayMode;
+@property (nonatomic, assign)LBPhotoBrowserImageDisplayModel displayMode;
 
 @property (nonatomic, strong)LBPhotoItem *item;
 @property (nonatomic, strong)UIImageView *mImageView;
 
-- (void)setItem:(LBPhotoItem *)item displayMode:(LBPhotoBrowserImageDisplayMode)displayMode;
+- (void)setItem:(LBPhotoItem *)item displayMode:(LBPhotoBrowserImageDisplayModel)displayMode;
 
 @end

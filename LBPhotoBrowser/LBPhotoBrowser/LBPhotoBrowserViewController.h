@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "LBPhotoItem.h"
-#import "LBPhotoBrowser.h"
+
+typedef NS_ENUM(NSUInteger, LBPhotoBrowserImageDisplayModel) {
+    KSPhotoBrowserImageFullScreen = 0,
+    KSPhotoBrowserImagePreview
+};
 
 @interface LBPhotoBrowserViewController : UIViewController
 
@@ -21,7 +25,7 @@
 /** 所有items */
 @property (nonatomic, strong)NSMutableArray <LBPhotoItem *> *items;
 /** 显示模式（大图模式/预览模式） */
-@property (nonatomic, assign)LBPhotoBrowserImageDisplayMode displayMode;
+@property (nonatomic, assign)LBPhotoBrowserImageDisplayModel displayMode;
 
 /** 是否启用RemarkView 默认为NO*/
 @property (nonatomic, assign)BOOL remarkViewEnable;
