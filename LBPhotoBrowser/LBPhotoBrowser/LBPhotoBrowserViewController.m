@@ -300,14 +300,14 @@
         if(self.navgationView.hidden){
             self.navgationView.hidden = NO;
             self.remarkScrollView.hidden = (_remarkViewEnable&&self.remarkScrollView.isEnable)?NO:YES;
-            [UIView animateWithDuration:0.3 animations:^{
+            [UIView animateWithDuration:0.2 animations:^{
                 self.navgationView.alpha = 1;
                 self.remarkScrollView.alpha = 1;
             } completion:^(BOOL finished) {
                 [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
             }];
         }else{
-            [UIView animateWithDuration:0.3 animations:^{
+            [UIView animateWithDuration:0.2 animations:^{
                 self.navgationView.alpha = 0;
                 self.remarkScrollView.alpha = 0;
             } completion:^(BOOL finished) {
