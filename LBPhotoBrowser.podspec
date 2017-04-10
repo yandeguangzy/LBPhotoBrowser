@@ -105,7 +105,9 @@ Pod::Spec.new do |s|
 
   # s.resource  = "icon.png"
  
-  s.resources = "LBPhotoBrowser/LBPhotoBrowser/*.{xib,png}"
+  #s.resources = "LBPhotoBrowser/LBPhotoBrowser/*.{xib,png}"
+
+  s.resources = ["LBPhotoBrowser/*.xcassets"]
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 

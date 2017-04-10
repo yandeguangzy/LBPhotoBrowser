@@ -8,53 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		192C19B86543226C191F9B2B /* Pods_LBPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7089C28802C252A45F3F2BFB /* Pods_LBPhotoBrowser.framework */; };
-		EB012E9C1E769EF000EC756E /* LBPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB012E9B1E769EF000EC756E /* LBPhotoView.m */; };
-		EB012E9F1E7A5B1B00EC756E /* LBPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB012E9E1E7A5B1B00EC756E /* LBPhotoCollectionViewCell.m */; };
-		EB0161B61E80D4DA00F48C0E /* LBPhotoBrowserRemarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0161B51E80D4DA00F48C0E /* LBPhotoBrowserRemarkView.m */; };
-		EB905AC21E975B6D0055C7FB /* LBPhotoBrowser_close.png in Resources */ = {isa = PBXBuildFile; fileRef = EB905AB91E975B6D0055C7FB /* LBPhotoBrowser_close.png */; };
-		EB905AC31E975B6D0055C7FB /* LBPhotoBrowser_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB905ABA1E975B6D0055C7FB /* LBPhotoBrowser_close@2x.png */; };
-		EB905AC41E975B6D0055C7FB /* LBPhotoBrowser_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB905ABB1E975B6D0055C7FB /* LBPhotoBrowser_close@3x.png */; };
-		EB905AC51E975B6D0055C7FB /* LBPhotoBrowser_full.png in Resources */ = {isa = PBXBuildFile; fileRef = EB905ABC1E975B6D0055C7FB /* LBPhotoBrowser_full.png */; };
-		EB905AC61E975B6D0055C7FB /* LBPhotoBrowser_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB905ABD1E975B6D0055C7FB /* LBPhotoBrowser_full@2x.png */; };
-		EB905AC71E975B6D0055C7FB /* LBPhotoBrowser_full@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB905ABE1E975B6D0055C7FB /* LBPhotoBrowser_full@3x.png */; };
-		EB905AC81E975B6D0055C7FB /* LBPhotoBrowser_small.png in Resources */ = {isa = PBXBuildFile; fileRef = EB905ABF1E975B6D0055C7FB /* LBPhotoBrowser_small.png */; };
-		EB905AC91E975B6D0055C7FB /* LBPhotoBrowser_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB905AC01E975B6D0055C7FB /* LBPhotoBrowser_small@2x.png */; };
-		EB905ACA1E975B6D0055C7FB /* LBPhotoBrowser_small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB905AC11E975B6D0055C7FB /* LBPhotoBrowser_small@3x.png */; };
-		EB9C90391E9B75A100656C76 /* auctionObtainOther_tel_image.png in Resources */ = {isa = PBXBuildFile; fileRef = EB9C90361E9B75A100656C76 /* auctionObtainOther_tel_image.png */; };
-		EB9C903A1E9B75A100656C76 /* auctionObtainOther_tel_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB9C90371E9B75A100656C76 /* auctionObtainOther_tel_image@2x.png */; };
-		EB9C903B1E9B75A100656C76 /* auctionObtainOther_tel_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB9C90381E9B75A100656C76 /* auctionObtainOther_tel_image@3x.png */; };
 		EBC69D661E69600500E72B28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC69D651E69600500E72B28 /* main.m */; };
 		EBC69D691E69600500E72B28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC69D681E69600500E72B28 /* AppDelegate.m */; };
 		EBC69D6C1E69600500E72B28 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC69D6B1E69600500E72B28 /* ViewController.m */; };
 		EBC69D6F1E69600500E72B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC69D6D1E69600500E72B28 /* Main.storyboard */; };
 		EBC69D711E69600500E72B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBC69D701E69600500E72B28 /* Assets.xcassets */; };
 		EBC69D741E69600500E72B28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBC69D721E69600500E72B28 /* LaunchScreen.storyboard */; };
-		EBC69E291E6D005600E72B28 /* LBPhotoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC69E281E6D005600E72B28 /* LBPhotoItem.m */; };
-		EBC69E2C1E6D2AAB00E72B28 /* LBPhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC69E2B1E6D2AAB00E72B28 /* LBPhotoBrowserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C47D2C90211533AE46AC97B /* Pods-LBPhotoBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBPhotoBrowser.release.xcconfig"; path = "Pods/Target Support Files/Pods-LBPhotoBrowser/Pods-LBPhotoBrowser.release.xcconfig"; sourceTree = "<group>"; };
 		35387D724C3F04FA2ECC0251 /* Pods-LBPhotoBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBPhotoBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LBPhotoBrowser/Pods-LBPhotoBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		7089C28802C252A45F3F2BFB /* Pods_LBPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB012E9A1E769EF000EC756E /* LBPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoView.h; sourceTree = "<group>"; };
-		EB012E9B1E769EF000EC756E /* LBPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoView.m; sourceTree = "<group>"; };
-		EB012E9D1E7A5B1B00EC756E /* LBPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoCollectionViewCell.h; sourceTree = "<group>"; };
-		EB012E9E1E7A5B1B00EC756E /* LBPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoCollectionViewCell.m; sourceTree = "<group>"; };
-		EB0161B41E80D4DA00F48C0E /* LBPhotoBrowserRemarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoBrowserRemarkView.h; sourceTree = "<group>"; };
-		EB0161B51E80D4DA00F48C0E /* LBPhotoBrowserRemarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoBrowserRemarkView.m; sourceTree = "<group>"; };
-		EB905AB91E975B6D0055C7FB /* LBPhotoBrowser_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LBPhotoBrowser_close.png; sourceTree = "<group>"; };
-		EB905ABA1E975B6D0055C7FB /* LBPhotoBrowser_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LBPhotoBrowser_close@2x.png"; sourceTree = "<group>"; };
-		EB905ABB1E975B6D0055C7FB /* LBPhotoBrowser_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LBPhotoBrowser_close@3x.png"; sourceTree = "<group>"; };
-		EB905ABC1E975B6D0055C7FB /* LBPhotoBrowser_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LBPhotoBrowser_full.png; sourceTree = "<group>"; };
-		EB905ABD1E975B6D0055C7FB /* LBPhotoBrowser_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LBPhotoBrowser_full@2x.png"; sourceTree = "<group>"; };
-		EB905ABE1E975B6D0055C7FB /* LBPhotoBrowser_full@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LBPhotoBrowser_full@3x.png"; sourceTree = "<group>"; };
-		EB905ABF1E975B6D0055C7FB /* LBPhotoBrowser_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LBPhotoBrowser_small.png; sourceTree = "<group>"; };
-		EB905AC01E975B6D0055C7FB /* LBPhotoBrowser_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LBPhotoBrowser_small@2x.png"; sourceTree = "<group>"; };
-		EB905AC11E975B6D0055C7FB /* LBPhotoBrowser_small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LBPhotoBrowser_small@3x.png"; sourceTree = "<group>"; };
-		EB9C90361E9B75A100656C76 /* auctionObtainOther_tel_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = auctionObtainOther_tel_image.png; sourceTree = "<group>"; };
-		EB9C90371E9B75A100656C76 /* auctionObtainOther_tel_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auctionObtainOther_tel_image@2x.png"; sourceTree = "<group>"; };
-		EB9C90381E9B75A100656C76 /* auctionObtainOther_tel_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auctionObtainOther_tel_image@3x.png"; sourceTree = "<group>"; };
 		EBC69D611E69600500E72B28 /* LBPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC69D651E69600500E72B28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EBC69D671E69600500E72B28 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -65,11 +30,6 @@
 		EBC69D701E69600500E72B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBC69D731E69600500E72B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBC69D751E69600500E72B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EBC69E271E6D005600E72B28 /* LBPhotoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoItem.h; sourceTree = "<group>"; };
-		EBC69E281E6D005600E72B28 /* LBPhotoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoItem.m; sourceTree = "<group>"; };
-		EBC69E2A1E6D2AAB00E72B28 /* LBPhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoBrowserViewController.h; sourceTree = "<group>"; };
-		EBC69E2B1E6D2AAB00E72B28 /* LBPhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoBrowserViewController.m; sourceTree = "<group>"; };
-		EBC69E2D1E6D5D4500E72B28 /* LBPhotoBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBPhotoBrowser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,16 +61,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		EB9C90351E9B75A100656C76 /* image */ = {
-			isa = PBXGroup;
-			children = (
-				EB9C90361E9B75A100656C76 /* auctionObtainOther_tel_image.png */,
-				EB9C90371E9B75A100656C76 /* auctionObtainOther_tel_image@2x.png */,
-				EB9C90381E9B75A100656C76 /* auctionObtainOther_tel_image@3x.png */,
-			);
-			path = image;
-			sourceTree = "<group>";
-		};
 		EBC69D581E69600500E72B28 = {
 			isa = PBXGroup;
 			children = (
@@ -132,8 +82,6 @@
 		EBC69D631E69600500E72B28 /* LBPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				EB9C90351E9B75A100656C76 /* image */,
-				EBC69E261E6D005600E72B28 /* LBPhotoBrowser */,
 				EBC69D671E69600500E72B28 /* AppDelegate.h */,
 				EBC69D681E69600500E72B28 /* AppDelegate.m */,
 				EBC69D6A1E69600500E72B28 /* ViewController.h */,
@@ -153,33 +101,6 @@
 				EBC69D651E69600500E72B28 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		EBC69E261E6D005600E72B28 /* LBPhotoBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				EB905AB91E975B6D0055C7FB /* LBPhotoBrowser_close.png */,
-				EB905ABA1E975B6D0055C7FB /* LBPhotoBrowser_close@2x.png */,
-				EB905ABB1E975B6D0055C7FB /* LBPhotoBrowser_close@3x.png */,
-				EB905ABC1E975B6D0055C7FB /* LBPhotoBrowser_full.png */,
-				EB905ABD1E975B6D0055C7FB /* LBPhotoBrowser_full@2x.png */,
-				EB905ABE1E975B6D0055C7FB /* LBPhotoBrowser_full@3x.png */,
-				EB905ABF1E975B6D0055C7FB /* LBPhotoBrowser_small.png */,
-				EB905AC01E975B6D0055C7FB /* LBPhotoBrowser_small@2x.png */,
-				EB905AC11E975B6D0055C7FB /* LBPhotoBrowser_small@3x.png */,
-				EBC69E271E6D005600E72B28 /* LBPhotoItem.h */,
-				EBC69E281E6D005600E72B28 /* LBPhotoItem.m */,
-				EBC69E2A1E6D2AAB00E72B28 /* LBPhotoBrowserViewController.h */,
-				EBC69E2B1E6D2AAB00E72B28 /* LBPhotoBrowserViewController.m */,
-				EBC69E2D1E6D5D4500E72B28 /* LBPhotoBrowser.h */,
-				EB012E9A1E769EF000EC756E /* LBPhotoView.h */,
-				EB012E9B1E769EF000EC756E /* LBPhotoView.m */,
-				EB012E9D1E7A5B1B00EC756E /* LBPhotoCollectionViewCell.h */,
-				EB012E9E1E7A5B1B00EC756E /* LBPhotoCollectionViewCell.m */,
-				EB0161B41E80D4DA00F48C0E /* LBPhotoBrowserRemarkView.h */,
-				EB0161B51E80D4DA00F48C0E /* LBPhotoBrowserRemarkView.m */,
-			);
-			path = LBPhotoBrowser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,21 +165,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB905AC21E975B6D0055C7FB /* LBPhotoBrowser_close.png in Resources */,
-				EB905ACA1E975B6D0055C7FB /* LBPhotoBrowser_small@3x.png in Resources */,
-				EB905AC51E975B6D0055C7FB /* LBPhotoBrowser_full.png in Resources */,
 				EBC69D741E69600500E72B28 /* LaunchScreen.storyboard in Resources */,
 				EBC69D711E69600500E72B28 /* Assets.xcassets in Resources */,
 				EBC69D6F1E69600500E72B28 /* Main.storyboard in Resources */,
-				EB905AC71E975B6D0055C7FB /* LBPhotoBrowser_full@3x.png in Resources */,
-				EB905AC91E975B6D0055C7FB /* LBPhotoBrowser_small@2x.png in Resources */,
-				EB905AC61E975B6D0055C7FB /* LBPhotoBrowser_full@2x.png in Resources */,
-				EB905AC81E975B6D0055C7FB /* LBPhotoBrowser_small.png in Resources */,
-				EB9C903B1E9B75A100656C76 /* auctionObtainOther_tel_image@3x.png in Resources */,
-				EB9C903A1E9B75A100656C76 /* auctionObtainOther_tel_image@2x.png in Resources */,
-				EB905AC41E975B6D0055C7FB /* LBPhotoBrowser_close@3x.png in Resources */,
-				EB905AC31E975B6D0055C7FB /* LBPhotoBrowser_close@2x.png in Resources */,
-				EB9C90391E9B75A100656C76 /* auctionObtainOther_tel_image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,11 +229,6 @@
 				EBC69D6C1E69600500E72B28 /* ViewController.m in Sources */,
 				EBC69D691E69600500E72B28 /* AppDelegate.m in Sources */,
 				EBC69D661E69600500E72B28 /* main.m in Sources */,
-				EB012E9C1E769EF000EC756E /* LBPhotoView.m in Sources */,
-				EBC69E291E6D005600E72B28 /* LBPhotoItem.m in Sources */,
-				EBC69E2C1E6D2AAB00E72B28 /* LBPhotoBrowserViewController.m in Sources */,
-				EB0161B61E80D4DA00F48C0E /* LBPhotoBrowserRemarkView.m in Sources */,
-				EB012E9F1E7A5B1B00EC756E /* LBPhotoCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
