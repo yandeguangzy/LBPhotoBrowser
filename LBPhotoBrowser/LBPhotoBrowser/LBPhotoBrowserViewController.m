@@ -140,7 +140,7 @@
         _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _backBtn.frame = CGRectMake(30, 5, 25, 25);
         _backBtn.backgroundColor = [UIColor clearColor];
-        [_backBtn setBackgroundImage:[UIImage imageNamed:@"LBPhotoBrowser_close"] forState:UIControlStateNormal];
+        [_backBtn setBackgroundImage:[UIImage imageNamed:@"auctionObtainOther_tel_image"] forState:UIControlStateNormal];
         [_backBtn addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _backBtn;
