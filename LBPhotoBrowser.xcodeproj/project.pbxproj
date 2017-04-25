@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		192C19B86543226C191F9B2B /* Pods_LBPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7089C28802C252A45F3F2BFB /* Pods_LBPhotoBrowser.framework */; };
+		EB1BBE181E9F729800387C1F /* LBPhotoBrowserRemarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBE061E9F729800387C1F /* LBPhotoBrowserRemarkView.m */; };
+		EB1BBE191E9F729800387C1F /* LBPhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBE081E9F729800387C1F /* LBPhotoBrowserViewController.m */; };
+		EB1BBE1A1E9F729800387C1F /* LBPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBE0A1E9F729800387C1F /* LBPhotoCollectionViewCell.m */; };
+		EB1BBE1B1E9F729800387C1F /* LBPhotoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBE0C1E9F729800387C1F /* LBPhotoItem.m */; };
+		EB1BBE1C1E9F729800387C1F /* LBPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBE0E1E9F729800387C1F /* LBPhotoView.m */; };
+		EB1F4E0B1EAF23B200632B36 /* LBPhotoBroser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB1F4E0A1EAF23B200632B36 /* LBPhotoBroser.bundle */; };
 		EBC69D661E69600500E72B28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC69D651E69600500E72B28 /* main.m */; };
 		EBC69D691E69600500E72B28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC69D681E69600500E72B28 /* AppDelegate.m */; };
 		EBC69D6C1E69600500E72B28 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC69D6B1E69600500E72B28 /* ViewController.m */; };
@@ -20,6 +26,18 @@
 		0C47D2C90211533AE46AC97B /* Pods-LBPhotoBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBPhotoBrowser.release.xcconfig"; path = "Pods/Target Support Files/Pods-LBPhotoBrowser/Pods-LBPhotoBrowser.release.xcconfig"; sourceTree = "<group>"; };
 		35387D724C3F04FA2ECC0251 /* Pods-LBPhotoBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBPhotoBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LBPhotoBrowser/Pods-LBPhotoBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		7089C28802C252A45F3F2BFB /* Pods_LBPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB1BBDFB1E9F729800387C1F /* LBPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoBrowser.h; sourceTree = "<group>"; };
+		EB1BBE051E9F729800387C1F /* LBPhotoBrowserRemarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoBrowserRemarkView.h; sourceTree = "<group>"; };
+		EB1BBE061E9F729800387C1F /* LBPhotoBrowserRemarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoBrowserRemarkView.m; sourceTree = "<group>"; };
+		EB1BBE071E9F729800387C1F /* LBPhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoBrowserViewController.h; sourceTree = "<group>"; };
+		EB1BBE081E9F729800387C1F /* LBPhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoBrowserViewController.m; sourceTree = "<group>"; };
+		EB1BBE091E9F729800387C1F /* LBPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		EB1BBE0A1E9F729800387C1F /* LBPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		EB1BBE0B1E9F729800387C1F /* LBPhotoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoItem.h; sourceTree = "<group>"; };
+		EB1BBE0C1E9F729800387C1F /* LBPhotoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoItem.m; sourceTree = "<group>"; };
+		EB1BBE0D1E9F729800387C1F /* LBPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoView.h; sourceTree = "<group>"; };
+		EB1BBE0E1E9F729800387C1F /* LBPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoView.m; sourceTree = "<group>"; };
+		EB1F4E0A1EAF23B200632B36 /* LBPhotoBroser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LBPhotoBroser.bundle; sourceTree = "<group>"; };
 		EBC69D611E69600500E72B28 /* LBPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC69D651E69600500E72B28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EBC69D671E69600500E72B28 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,6 +79,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EB1BBDFA1E9F729800387C1F /* LBPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				EB1F4E0A1EAF23B200632B36 /* LBPhotoBroser.bundle */,
+				EB1BBDFB1E9F729800387C1F /* LBPhotoBrowser.h */,
+				EB1BBE051E9F729800387C1F /* LBPhotoBrowserRemarkView.h */,
+				EB1BBE061E9F729800387C1F /* LBPhotoBrowserRemarkView.m */,
+				EB1BBE071E9F729800387C1F /* LBPhotoBrowserViewController.h */,
+				EB1BBE081E9F729800387C1F /* LBPhotoBrowserViewController.m */,
+				EB1BBE091E9F729800387C1F /* LBPhotoCollectionViewCell.h */,
+				EB1BBE0A1E9F729800387C1F /* LBPhotoCollectionViewCell.m */,
+				EB1BBE0B1E9F729800387C1F /* LBPhotoItem.h */,
+				EB1BBE0C1E9F729800387C1F /* LBPhotoItem.m */,
+				EB1BBE0D1E9F729800387C1F /* LBPhotoView.h */,
+				EB1BBE0E1E9F729800387C1F /* LBPhotoView.m */,
+			);
+			path = LBPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		EBC69D581E69600500E72B28 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +119,7 @@
 		EBC69D631E69600500E72B28 /* LBPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				EB1BBDFA1E9F729800387C1F /* LBPhotoBrowser */,
 				EBC69D671E69600500E72B28 /* AppDelegate.h */,
 				EBC69D681E69600500E72B28 /* AppDelegate.m */,
 				EBC69D6A1E69600500E72B28 /* ViewController.h */,
@@ -166,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBC69D741E69600500E72B28 /* LaunchScreen.storyboard in Resources */,
+				EB1F4E0B1EAF23B200632B36 /* LBPhotoBroser.bundle in Resources */,
 				EBC69D711E69600500E72B28 /* Assets.xcassets in Resources */,
 				EBC69D6F1E69600500E72B28 /* Main.storyboard in Resources */,
 			);
@@ -227,8 +266,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBC69D6C1E69600500E72B28 /* ViewController.m in Sources */,
+				EB1BBE1A1E9F729800387C1F /* LBPhotoCollectionViewCell.m in Sources */,
 				EBC69D691E69600500E72B28 /* AppDelegate.m in Sources */,
+				EB1BBE1C1E9F729800387C1F /* LBPhotoView.m in Sources */,
+				EB1BBE181E9F729800387C1F /* LBPhotoBrowserRemarkView.m in Sources */,
 				EBC69D661E69600500E72B28 /* main.m in Sources */,
+				EB1BBE1B1E9F729800387C1F /* LBPhotoItem.m in Sources */,
+				EB1BBE191E9F729800387C1F /* LBPhotoBrowserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

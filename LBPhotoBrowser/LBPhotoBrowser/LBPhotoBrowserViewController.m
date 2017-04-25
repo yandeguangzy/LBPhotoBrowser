@@ -140,7 +140,9 @@
         _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _backBtn.frame = CGRectMake(30, 5, 25, 25);
         _backBtn.backgroundColor = [UIColor clearColor];
-        [_backBtn setBackgroundImage:[UIImage imageNamed:@"auctionObtainOther_tel_image"] forState:UIControlStateNormal];
+        NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"LBPhotoBroser")];
+        NSString *bundlePath = [bundle pathForResource:@"LBPhotoBroser" ofType:@"bundle"];
+        [_backBtn setBackgroundImage:[[UIImage alloc]initWithContentsOfFile:[bundlePath stringByAppendingPathComponent:@"LBPhotoBrowser_close.png"]] forState:UIControlStateNormal];
         [_backBtn addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _backBtn;
@@ -164,8 +166,10 @@
         _disPlayModelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _disPlayModelBtn.frame = CGRectMake(SCREEN_WIDTH - 64, 5, 34, 34);
         _disPlayModelBtn.backgroundColor = [UIColor clearColor];
-        [_disPlayModelBtn setBackgroundImage:[UIImage imageNamed:@"LBPhotoBrowser_small"] forState:UIControlStateNormal];
-        [_disPlayModelBtn setBackgroundImage:[UIImage imageNamed:@"LBPhotoBrowser_full"] forState:UIControlStateSelected];
+        NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"LBPhotoBroser")];
+        NSString *bundlePath = [bundle pathForResource:@"LBPhotoBroser" ofType:@"bundle"];
+        [_disPlayModelBtn setBackgroundImage:[[UIImage alloc]initWithContentsOfFile:[bundlePath stringByAppendingPathComponent:@"LBPhotoBrowser_small.png"]] forState:UIControlStateNormal];
+        [_disPlayModelBtn setBackgroundImage:[[UIImage alloc]initWithContentsOfFile:[bundlePath stringByAppendingPathComponent:@"LBPhotoBrowser_full.png"]] forState:UIControlStateSelected];
         [_disPlayModelBtn addTarget:self action:@selector(switchDisplayMode:) forControlEvents:UIControlEventTouchUpInside];
         _disPlayModelBtn.selected = NO;//NO为全屏展示  YES为预览模式
     }
