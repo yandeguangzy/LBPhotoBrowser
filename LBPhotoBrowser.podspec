@@ -105,7 +105,7 @@ Pod::Spec.new do |s|
 
   # s.resource  = "icon.png"
  
-  s.resources = "LBPhotoBrowser/LBPhotoBrowser/LBPhotoBroser.bundle"
+  s.resources = "LBPhotoBrowser/LBPhotoBrowser/LBPhotoBrowser.bundle"
 
   #s.resources = ["LBPhotoBrowser/*.xcassets"]
 
