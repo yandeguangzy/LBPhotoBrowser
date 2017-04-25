@@ -140,8 +140,8 @@
         _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _backBtn.frame = CGRectMake(30, 5, 25, 25);
         _backBtn.backgroundColor = [UIColor clearColor];
-        NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"LBPhotoBroser")];
-        NSString *bundlePath = [bundle pathForResource:@"LBPhotoBroser" ofType:@"bundle"];
+        NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"LBPhotoBrowser")];
+        NSString *bundlePath = [bundle pathForResource:@"LBPhotoBrowser" ofType:@"bundle"];
         [_backBtn setBackgroundImage:[[UIImage alloc]initWithContentsOfFile:[bundlePath stringByAppendingPathComponent:@"LBPhotoBrowser_close.png"]] forState:UIControlStateNormal];
         [_backBtn addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -166,8 +166,8 @@
         _disPlayModelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _disPlayModelBtn.frame = CGRectMake(SCREEN_WIDTH - 64, 5, 34, 34);
         _disPlayModelBtn.backgroundColor = [UIColor clearColor];
-        NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"LBPhotoBroser")];
-        NSString *bundlePath = [bundle pathForResource:@"LBPhotoBroser" ofType:@"bundle"];
+        NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"LBPhotoBrowser")];
+        NSString *bundlePath = [bundle pathForResource:@"LBPhotoBrowser" ofType:@"bundle"];
         [_disPlayModelBtn setBackgroundImage:[[UIImage alloc]initWithContentsOfFile:[bundlePath stringByAppendingPathComponent:@"LBPhotoBrowser_small.png"]] forState:UIControlStateNormal];
         [_disPlayModelBtn setBackgroundImage:[[UIImage alloc]initWithContentsOfFile:[bundlePath stringByAppendingPathComponent:@"LBPhotoBrowser_full.png"]] forState:UIControlStateSelected];
         [_disPlayModelBtn addTarget:self action:@selector(switchDisplayMode:) forControlEvents:UIControlEventTouchUpInside];
