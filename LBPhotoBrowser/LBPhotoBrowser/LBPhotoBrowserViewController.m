@@ -463,8 +463,8 @@
         _mCollectionView.pagingEnabled = YES;
         [self addGestureRecognizer];
     }
-    [self collectionReloadData];
     [self changgeCollectionViewFrame];
+    [self collectionReloadData];
 }
 
 - (void)collectionSelectedItem:(NSInteger)index{
@@ -484,11 +484,11 @@
 
 - (void)changgeCollectionViewFrame{
     if(_displayMode == KSPhotoBrowserImageFullScreen){
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0 animations:^{
             self.mCollectionView.frame = CGRectMake(-10, 0, SCREEN_WIDTH+10, SCREEN_HEIGHT);
         }];
     }else{
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0 animations:^{
             self.mCollectionView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
         }];
     }
@@ -496,7 +496,7 @@
     if(_displayMode == KSPhotoBrowserImagePreview){
         [self.mCollectionView setContentOffset:_oldContentOffset animated:NO];
     }
-     [self scrollViewDidEndDecelerating:_mCollectionView];
+    [self scrollViewDidEndDecelerating:_mCollectionView];
 }
 
 
@@ -519,10 +519,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc{
-    NSLog(@"11111dealloc");
-    
-}
+
 
 /*
 #pragma mark - Navigation
